@@ -16,7 +16,7 @@ router.get('/', async function(req, res, next) {
 /* POST citas */
 router.post('/', async function(req, res, next) {
   try {
-    res.json(await programmingLanguages.create(req.body));
+    res.json(await citas.create(req.body));
   } catch (err) {
     console.error(`Error while creating cita`, err.message);
     next(err);

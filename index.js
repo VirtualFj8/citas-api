@@ -1,15 +1,11 @@
 
 const express = require('express');
-const cors = require('cors')
-const urlAuth = ['http://127.0.0.1:8081'] //polymer server port = 8081
 const app = express();
 const port = 3000;
 const citasRouter = require("./routes/citas");
 
 var server = require('http').createServer();
 
-app.use(cors({origin: urlAuth}));
-app.use(express.json());
 app.use(
   express.urlencoded({
     extended: true,
@@ -18,7 +14,7 @@ app.use(
 app.get("/", (req, res) => {
   res.json({ message: "Connected." });
 });
-app.use("/citas", citasRouter);
+//app.use("/citas", citasRouter);
 /* Error handler middleware */
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
@@ -31,7 +27,7 @@ app.use((err, req, res, next) => {
 app.use(function (req, res, next) {
 
   // Website you wish to allow to connect
-  res.setHeader('Access-Control-Allow-Origin', 'http://127.0.0.1:5500');
+  res.setHeader('Access-Control-Allow-Origin', 'http://127.0.0.1:3300'); //8081
 
   // Request methods you wish to allow
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
